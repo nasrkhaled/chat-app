@@ -1,0 +1,204 @@
+db.collection("messages").where("username", "==", ali).get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+	
+	
+db.collection("cities").where("state", "==", "CA").onSnapshot(function(querySnapshot) {
+
+        querySnapshot.forEach(function(doc) {
+            // binded to the UI
+            allItems.push(doc.data().name);
+        });
+    });
+	
+	
+db.collection("cities").where("state", "==", "CO").onSnapshot(function(querySnapshot) {
+        var cities = [];
+        querySnapshot.forEach(function(doc) {
+           // binded to the UI
+             allItems.push(cities);
+        });
+});
+	/*******************************************/
+	
+	if (email.length < 4) {
+        alert('Please enter an email address.');
+        return;
+      }
+      if (password.length < 4) {
+        alert('Please enter a password.');
+        return;
+      }
+	  
+	  
+	  /************************************************/
+	  
+	 
+
+
+firebase deploy --only hosting
+	  
+	  /************************************************/
+	  
+	  
+	  
+	  $("#friend-content").append('<li id="'+chKey+'" class="active"><a href=""><div class="contact"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="msg-preview"><h6>'+chData.to_username+'</h6><p class="text-muted">'+chData.msg+'</p><small class="text-muted">'+chData.time+'</small><div class="chat-alert">1</div></div></div></a></li>');
+	  
+	  
+
+	  
+	  
+	  
+	  
+	  $("#friend-content").append('<li id="'+chKey+'" class="active"><a href=""><div class="contact"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="msg-preview"><h6>'+chData.from_username+'</h6><p class="text-muted">'+chData.msg+'</p><small class="text-muted">'+chData.time+'</small><div class="chat-alert">1</div></div></div></a></li>');
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	/*****************************************************************************************/  
+	  
+	//	 	var chat_id =" ";
+//	 	var datasort=[];
+//		var refer = firebase.database().ref("users");
+//
+//		  refer.on("value", function(snapshot) {
+//		  snapshot.forEach(function(childSnapshot) {
+//			  
+//			  var childData = childSnapshot.val();
+//			  var childKey = childSnapshot.key;
+//			  friend_id = childKey ;
+//			  var email = childData.email;
+//			  chat_id = '123' + friend_id ;
+			  
+			  var r=firebase.database().ref("messages/one/");
+			  r.once('value', function(snapshot) {
+			  snapshot.forEach(function(childSnapshot) {	
+					var chKey = childSnapshot.key;
+					var chData = childSnapshot.val();
+				  
+				  	//var list_user = new Array();
+					if(chData.from_user_id == id ){	
+						 $("#friend-content").append('<li id="'+chKey+'" class="active"><a href=""><div class="contact"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="msg-preview"><h6>'+chData.to_username+'</h6><p class="text-muted">'+chData.msg+'</p><small class="text-muted">'+chData.time+'</small><div class="chat-alert">1</div></div></div></a></li>');
+//						for (var i = 0 ; i < list_user.length; i++) {
+//							if ( list_user[i] != chData.to_email ) { 
+//								
+//								alert("mmmmmmmmm ");
+//							list_user.push(chData.to_email);	
+//							}else { alert("error 1"); }
+//						}				
+					}else if(chData.to_user_id == id){		
+						$("#friend-content").append('<li id="'+chKey+'" class="active"><a href=""><div class="contact"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="msg-preview"><h6>'+chData.from_username+'</h6><p class="text-muted">'+chData.msg+'</p><small class="text-muted">'+chData.time+'</small><div class="chat-alert">1</div></div></div></a></li>');
+//						for (var i = 0 ; i < list_user.length; i++) {
+//							if ( list_user[i] != chData.from_email ) { 
+//								
+//							alert("sssssssssssss ");	
+//							list_user.push(chData.from_email);	
+//							}else { alert("error 2"); }
+//						}
+
+						
+					}				  
+
+				  
+				  
+				  
+				  
+				  
+				  });
+				});  
+			 
+//		 });
+//		});  
+	  
+	  
+/********************************************************************************************************/	  
+	  
+	  
+	  
+	  function parseURLParams(url) {
+        var queryStart = url.indexOf("?") + 1,
+            queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+            query = url.slice(queryStart, queryEnd - 1),
+            pairs = query.replace(/\+/g, " ").split("&"),
+            parms = {}, i, n, v, nv;
+
+        if (query === url || query === "") return;
+
+        for (i = 0; i < pairs.length; i++) {
+            nv = pairs[i].split("=", 2);
+            n = decodeURIComponent(nv[0]);
+            v = decodeURIComponent(nv[1]);
+
+            if (!parms.hasOwnProperty(n)) parms[n] = [];
+            parms[n].push(nv.length === 2 ? v : null);
+        }
+        return parms;
+    }
+    var  id=parseURLParams(window.location.href);
+									 
+/***************************************************************/
+									 
+
+<html>
+
+<script language="javascript" type="text/javascript">
+var scrt_var = 10; 
+openPage = function() {
+location.href = "2.html?Key="+scrt_var;
+}
+</script>
+
+ this is a <a href ="javascript:openPage()">Link  </a>
+</html>
+
+
+var currentLocation = window.location;
+document.URL;
+
+
+/*****************************************************************/
+
+
+
+	    var ref=firebase.database().ref("messages/one/");
+     
+         ref.once('value', function(snapshot) {
+              snapshot.forEach(function(childSnapshot) {	
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                     if(childData.id_from==id){
+						
+                         $("#chat-content").append('<li class="right" id="'+childKey+'"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">'+childData.email_from+'</h5><small class="text-muted" id="time_from">'+childData.time+'</small></div><p id="mes_from">'+childData.msg+'</p></div></li>');
+                         
+                     }else{
+                              $("#chat-content").append('<li id="'+childKey+'" class="left"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">'+childData.email_from+'</h5><small class="text-muted" id="time_from">'+childData.time+'</small></div><p id="mes_from">'+childData.msg+'</p></div></li>');
+                     
+                     }
+                  
+              });
+            }); 
+
+
+
+/****************************************************************/
+									 
+									 
+									 
+ 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  

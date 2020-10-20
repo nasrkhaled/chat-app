@@ -1,0 +1,33 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script> -->
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+    authDomain: "real-7031f.firebaseapp.com",
+    databaseURL: "https://real-7031f.firebaseio.com",
+    projectId: "real-7031f",
+    storageBucket: "real-7031f.appspot.com",
+    messagingSenderId: "194214200891"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+var r = firebase.database().ref("messages/one");
+                    r.once('value', function(snapshot) {
+                        snapshot.forEach(function(childSnapshot) {
+                            var chKey = childSnapshot.key;
+                            var chData = childSnapshot.val()
+                            if (chData.to_user_id=='ABoZIH7fDRQv8rf2LbxAaNehah43'&&chData.from_user_id =='OKhmdWpoa6OEmSM4kVSXtd9jEcK2'||chData.to_user_id=='OKhmdWpoa6OEmSM4kVSXtd9jEcK2'&&chData.from_user_id='ABoZIH7fDRQv8rf2LbxAaNehah43' )
+                            {
+                              alert(chData.msg);
+                            }
+                            else
+                            {
+                              console.log('dsds');
+                            }
+
+                          })});
+
+</script>

@@ -1,0 +1,106 @@
+<input type="file" id="but" value="" />
+<img id="myImage" src="#">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+    authDomain: "real-7031f.firebaseapp.com",
+    databaseURL: "https://real-7031f.firebaseio.com",
+    projectId: "real-7031f",
+    storageBucket: "real-7031f.appspot.com",
+    messagingSenderId: "194214200891"
+  };
+  firebase.initializeApp(config);
+</script>
+ 
+
+<script>
+     var storageRef = firebase.storage().ref();
+
+    function handleFileSelect(evt) {
+      evt.stopPropagation();
+      evt.preventDefault();
+      var file = evt.target.files[0];;
+      var metadata = {
+        'contentType': file.type
+      };
+      storageRef.child('images/' + file.name).put(file, metadata).then(function(snapshot) {
+        console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+        console.log(snapshot.metadata);
+        var url = snapshot.metadata.downloadURLs[0];
+        alert(url);
+        console.log('File available at', url);
+        document.getElementById("myImage").src = url;
+        
+      }).catch(function(error) {
+        console.error('Upload failed:', error);
+      });
+          console.log(document.getElementById('myFile').value);
+    }
+
+
+    document.getElementById('but').addEventListener('change', handleFileSelect);
+   
+
+</script>
+ <script>
+     function showimage() {
+
+
+
+         var storageRef = firebase.storage().ref();
+         var spaceRef = storageRef.child('images/'+childData.msg);
+         storageRef.child('images/'+childData.msg).getDownloadURL().then(function(url) {
+             var test = url;
+             alert(url);
+             document.querySelector('img').src = test;
+
+         }).catch(function(error) {
+               console.log('erorrrrrrrr!');
+         });
+
+
+     }
+
+     var someText = 'n.jpg';
+
+if (someText.indexOf('') >= 0) {
+	alert("good");
+}
+if (someText.indexOf('javascript') === -1) {
+	alert("bad");
+}
+     
+    </script>
+    <input type="button" value ="view Image" id="viewbtn" onclick="showimage();">
+    <img src="test" height="125px" width="200px"/> 
+ <script type="text/javascript">
+    function enc( text ,key)
+  {
+    encrypted = CryptoJS.AES.encrypt(text, key);
+   var x = encrypted.toString();
+    return x ;
+  }
+  
+  
+  function dec(detext ,key)
+  {
+    decrypted = CryptoJS.AES.decrypt(detext,key);
+    
+    var x = decrypted.toString(CryptoJS.enc.Utf8);
+    return x ;
+  
+  }
+  z = prompt('Enter ');
+  var x =  enc(z ,"5243asasas");
+  var y =  dec(x,'5243asasas');
+    firebase.database().ref('messages/onesssssss').push({
+            msg:x,
+            demsg:y,
+                                          
+                                        }); 
+ </script>
+

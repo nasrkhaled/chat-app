@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-functions.js"></script>
+
+    <!-- Comment out (or don't include) services that you don't want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script> -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script src="js/jquery-1.4.2.min.js"></script>
+    <script>
+        // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+    authDomain: "real-7031f.firebaseapp.com",
+    databaseURL: "https://real-7031f.firebaseio.com",
+    projectId: "real-7031f",
+    storageBucket: "real-7031f.appspot.com",
+    messagingSenderId: "194214200891"
+  };
+  firebase.initializeApp(config);
+
+</script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CRubik:300,400,500,700,900" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+
+<body data-spy="scroll" data-target="#navigation" data-offset="71">
+
+
+    <header id="header-inverse">
+        <nav class="navbar navbar-default navbar-fixed-top menu">
+            <div class="container">
+
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="home.html"><img src="images/olec.png"></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+                    <ul class="nav navbar-nav navbar-right main-menu" id="header">
+
+
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav>
+    </header>
+    <!-- Header Section ends -->
+
+    <!-- Banner Section Starts -->
+    <section class="banner-olec" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Header image start -->
+                    <div class="header-img">
+                        <img src="images/header.png" alt="" />
+                    </div>
+                    <!-- Header image end -->
+                </div>
+
+                <div class="col-md-6">
+                    <!-- Header content start -->
+                    <div class="header-content wow fadeInUp">
+                        <h2> Chating app for your business. Faster way to communicate with team</h2>
+                        <p>ONE LANGUAGE ENOUGH TO COMMUNICATION.</p>
+
+                        <div class="app-download">
+
+                            <a href="#" class="btn-download btn-android"><i class="fa fa-android"></i> Get it on Google Play</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-video-olec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>What is OLE</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- About video intro start -->
+                    <div class="about-video-single">
+                        <figure>
+                            <img src="images/video-image.png" alt="" />
+                        </figure>
+
+                        <div class="video-overlay">
+                            <a href="https://www.youtube.com/watch?v=cJZoTqtwGzY" class="popup-video"><i class="flaticon-play-button"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-olec" id="features">
+        <div class="container">
+
+            <div class="row mb-5">
+                <div class="col-lg-5 col-md-6 offset-lg-1">
+                    <div class="feature-entry">
+                        <h4>Group Chatting</h4>
+                        <h2>Chat together,Work together</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                            a type specimen book</p>
+                        <a href="#" class="btn-custom">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-6">
+                    <div class="feature-image">
+                        <img src="images/feature-1.png" alt="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-lg-5 col-md-6 offset-lg-1 mt-4">
+                    <div class="feature-image">
+                        <img src="images/feature-2.png" alt="" />
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-6">
+                    <div class="feature-entry">
+                        <h4>Group Chatting</h4>
+                        <h2>Chat together,Work together</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                            a type specimen book</p>
+                        <a href="#" class="btn-custom">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5 col-md-6 offset-lg-1">
+                    <div class="feature-entry">
+                        <h4>Group Chatting</h4>
+                        <h2>Chat together,Work together</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                            a type specimen book</p>
+                        <a href="#" class="btn-custom">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-6 mt-4">
+                    <div class="feature-image">
+                        <img src="images/feature-3.png" alt="" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="faq-olec" id="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Frequently asked questions</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faq single start -->
+            <div class="row mb-sm-5">
+                <div class="col-md-6">
+                    <div class="faq-title">
+                        <h3>How to download your app?</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="faq-answer">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                            a type specimen book.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faq single end -->
+
+            <!-- Faq single start -->
+            <div class="row mb-sm-5">
+                <div class="col-md-6">
+                    <div class="faq-title">
+                        <h3>How do i cancel my order after complete payment?</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="faq-answer">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                            a type specimen book.</p>
+
+                        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                            unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faq single end -->
+
+            <!-- Faq single start -->
+            <div class="row mb-sm-5">
+                <div class="col-md-6">
+                    <div class="faq-title">
+                        <h3>How does it works? is live chat support available?</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="faq-answer">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                            a type specimen book.</p>
+
+                        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                            unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faq single end -->
+        </div>
+    </section>
+    <!-- FAQs Section ends -->
+
+    <!-- Contact us Section starts -->
+    <section class="contact-olec" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-content">
+                        <h2>Contact US</h2>
+                        <p>Should you have any questions regarding our offer, please do not hesitate to reach out. Just fill in a contact
+                            form or contact us via <a href="#">live chat</a>. You can also send us an email at <a href="#">support@domainname.com</a></p>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-md-6 col-sm-6">
+                            <!-- Contact Address single start -->
+                            <div class="contact-address-single">
+                                <figure>
+                                    <img src="images/contact-1.jpg" alt="" />
+                                </figure>
+
+                                <div class="contact-address-overlay">
+                                    <h3><span>OLEC</span> App.</h3>
+                                    <p>Benha, <br />123-ABC- El-qalyobia egypt </p>
+                                </div>
+                            </div>
+                            <!-- Contact Address single end -->
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+                            <!-- Contact Address single start -->
+                            <div class="contact-address-single">
+                                <figure>
+                                    <img src="images/contact-2.jpg" alt="" />
+                                </figure>
+
+                                <div class="contact-address-overlay">
+                                    <h3><span>OLEC</span> App.</h3>
+                                    <p>El-messaeid, <br />123-ABC- El-Arish egypt </p>
+                                </div>
+                            </div>
+                            <!-- Contact Address single end -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Contact Form start -->
+                    <div class="contact-form">
+                        <form id="contactForm" action="#" method="post" data-toggle="validator">
+                            <div class="row">
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Your Name Here..." required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email Here..." required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <textarea rows="6" name="message" id="message" class="form-control" placeholder="Write Your Message Here..." required></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 text-center">
+                                    <button type="submit" class="btn-contact" title="Submit Your Message!">Send Message</button>
+                                    <div id="msgSubmit" class="h3 text-left hidden"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Contact Form end -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-wrapper">
+                    <div class="col-md-4">
+
+                        <div class="download-apps">
+                            <h3>Download the app now</h3>
+                            <a href="#"><i class="fa fa-apple"></i></a>
+                            <a href="#"><i class="fa fa-android"></i></a>
+                        </div>
+                        <div class="social-links">
+                            <ul class="list-inline social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3 col-sm-2">
+                        <h5>For individuals</h5>
+                        <ul class="footer-links">
+                            <li><a href="#">Signup</a></li>
+                            <li><a href="#">login</a></li>
+                            <li><a href="#">Explore</a></li>
+                            <li><a href="#">Finder app</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Language settings</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <h5>About</h5>
+                        <ul class="footer-links2">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <h5>Contact Us</h5>
+                        <ul class="contact">
+                            <li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
+                            <li><i class="icon ion-ios-email-outline"></i>info@OLEC-team.com</li>
+                            <li><i class="icon ion-ios-location-outline"></i>150 sinai El-Arish</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <footer class="footer-olec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="footer-copyright">
+                        <p>OLEC-team &copy; 2019 SU-STUDENTS</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+
+</body>
+<script type="text/javascript">
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            $("#header").append(' <li><a href="home.html" class="active-link" role="button" aria-haspopup="true" aria-expanded="false">Home</a></li><li><a href="message.html"  role="button" aria-haspopup="true" aria-expanded="false">Message</a> </li><li><a href="show_groups.html" role="button" aria-haspopup="true" aria-expanded="false">Group</a></li><li><a href="setting.html">Setting</a></li><li><a href="logout.html">Logout</a></li>');
+
+        } else {
+            $("#header").append('<li><a href="home.html" class="active-link" role="button" aria-haspopup="true" aria-expanded="false">Home </a></li><li><a href="index.html" role="button" aria-haspopup="true" aria-expanded="false">Login/Signup</a></li>');
+        }
+
+    });
+
+</script>
+
+</html>

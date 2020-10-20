@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	
+	<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-functions.js"></script>
+
+<!-- Comment out (or don't include) services that you don't want to use -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script> -->
+
+<script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+    authDomain: "real-7031f.firebaseapp.com",
+    databaseURL: "https://real-7031f.firebaseio.com",
+    projectId: "real-7031f",
+    storageBucket: "real-7031f.appspot.com",
+    messagingSenderId: "194214200891"
+  };
+  firebase.initializeApp(config);
+</script>
+	
+	
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
+</head>
+
+<body>
+
+ <header id="header">
+        <nav class="navbar navbar-default navbar-fixed-top menu">
+            <div class="container">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="message.html"><span class="h-icon">OLE</span></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					
+         		<ul id="navbar" class="nav navbar-nav navbar-left main-menu">
+                       <li><a href="message.html">MESSAGE</a></li>
+						<li><a href="show_groups.html">GROUP</a></li>
+                        <li><a href="setting.html">SETTING</a></li>
+                        <li><a href="logout.html">LOGOUT</a></li>
+                    </ul>
+
+					
+							
+						
+					
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav>
+    </header>
+    <!--Header End-->
+
+    <div class="container">
+
+        <!-- Timeline
+      ================================================= -->
+        <div class="timeline">
+             
+                           
+            <div id="page-contents">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <div class="profile-info">
+                                <img src="images/insta-stories-logo-30fps.gif" alt="" class="img-responsive profile-photo" id="myImage"
+                                />
+                                <div id='custom_change'>
+                                <img src="images/change.png" alt="" class="img-responsive profile-photo" id="change-img"
+                                />
+								<input type="file" value="Change IMage" id="myFile" title="Change IMag">
+                            </div>
+                                
+                            </div>
+                    </div>
+                    <div class="col-md-8">
+
+                        <!-- Basic Information
+              ================================================= -->
+                        <div class="edit-profile-container">
+                            <div class="block-title">
+                                <h4 class="grey"><i class="icon ion-android-checkmark-circle"></i>Edit basic information</h4>
+                                <div class="line"></div>
+                                <p></p>
+                                <div class="line"></div>
+                            </div>
+                            <div class="edit-block">
+                                
+                                    <div class="row">
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstname">First name</label>
+                                            <input id="firstname" class="form-control input-group-lg " type="text" name="firstname"  placeholder="First name" value="" required="required" />
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label for="lastname" class="">Last name</label>
+                                            <input id="lastname" class="form-control input-group-lg" type="text" name="lastname"  placeholder="Last name" value="" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-xs-12">
+                                            <label for="email">My email</label>
+                                            <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="example@gmail.com" value="" required="required" onchange="email()"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p class="custom-label"><strong>Date of Birth</strong></p>
+                                        <div class="form-group col-sm-4 col-xs-4">
+                                            <label for="month" class="sr-only"></label>
+                                            <select class="form-control" id="day" required="required">
+                                                <option>Day</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-4 col-xs-4">
+                                            <label for="month" class="sr-only"></label>
+                                            <select class="form-control" id="month" required="required">
+                                                <option>Month</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-4 col-xs-4">
+                                            <label for="year" class="sr-only"></label>
+                                            <select class="form-control" id="year" required="required">
+                                                <option>Year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                       
+										<div class="form-group col-xs-4">
+                                            <label for="language">Language</label>
+												<select class="form-control" data-placeholder="Choose a Language..." id="language" required="required">
+													  <option value="AF">Afrikanns</option>
+													  <option value="SQ">Albanian</option>
+													  <option value="AR">Arabic</option>
+													  <option value="HY">Armenian</option>
+													  <option value="EU">Basque</option>
+													  <option value="BN">Bengali</option>
+													  <option value="BG">Bulgarian</option>
+													  <option value="CA">Catalan</option>
+													  <option value="KM">Cambodian</option>
+													  <option value="ZH">Chinese (Mandarin)</option>
+													  <option value="HR">Croation</option>
+													  <option value="CS">Czech</option>
+													  <option value="DA">Danish</option>
+													  <option value="NL">Dutch</option>
+													  <option value="EN">English</option>
+													  <option value="ET">Estonian</option>
+													  <option value="FJ">Fiji</option>
+													  <option value="FI">Finnish</option>
+													  <option value="FR">French</option>
+													  <option value="KA">Georgian</option>
+													  <option value="DE">German</option>
+													  <option value="EL">Greek</option>
+													  <option value="GU">Gujarati</option>
+													  <option value="HE">Hebrew</option>
+													  <option value="HI">Hindi</option>
+													  <option value="HU">Hungarian</option>
+													  <option value="IS">Icelandic</option>
+													  <option value="ID">Indonesian</option>
+													  <option value="GA">Irish</option>
+													  <option value="IT">Italian</option>
+													  <option value="JA">Japanese</option>
+													  <option value="JW">Javanese</option>
+													  <option value="KO">Korean</option>
+													  <option value="LA">Latin</option>
+													  <option value="LV">Latvian</option>
+													  <option value="LT">Lithuanian</option>
+													  <option value="MK">Macedonian</option>
+													  <option value="MS">Malay</option>
+													  <option value="ML">Malayalam</option>
+													  <option value="MT">Maltese</option>
+													  <option value="MI">Maori</option>
+													  <option value="MR">Marathi</option>
+													  <option value="MN">Mongolian</option>
+													  <option value="NE">Nepali</option>
+													  <option value="NO">Norwegian</option>
+													  <option value="FA">Persian</option>
+													  <option value="PL">Polish</option>
+													  <option value="PT">Portuguese</option>
+													  <option value="PA">Punjabi</option>
+													  <option value="QU">Quechua</option>
+													  <option value="RO">Romanian</option>
+													  <option value="RU">Russian</option>
+													  <option value="SM">Samoan</option>
+													  <option value="SR">Serbian</option>
+													  <option value="SK">Slovak</option>
+													  <option value="SL">Slovenian</option>
+													  <option value="ES">Spanish</option>
+													  <option value="SW">Swahili</option>
+													  <option value="SV">Swedish </option>
+													  <option value="TA">Tamil</option>
+													  <option value="TT">Tatar</option>
+													  <option value="TE">Telugu</option>
+													  <option value="TH">Thai</option>
+													  <option value="BO">Tibetan</option>
+													  <option value="TO">Tonga</option>
+													  <option value="TR">Turkish</option>
+													  <option value="UK">Ukranian</option>
+													  <option value="UR">Urdu</option>
+													  <option value="UZ">Uzbek</option>
+													  <option value="VI">Vietnamese</option>
+													  <option value="CY">Welsh</option>
+													  <option value="XH">Xhosa</option>
+													</select>
+											</div>
+										
+                                        <div class="form-group col-xs-4">
+                                            <label for="phone">Phone</label>
+                                            <input id="phone" class="form-control input-group-lg" type="text" name="phone"  placeholder="Enter Phone" value="" />
+                                        </div>
+										<div class="form-group col-xs-4">
+                                            <label for="status">Status</label>
+                                           <select class="form-control" id="status">
+                                                <option value="Busy">Busy</option>
+                                                <option value="Available">Available</option>
+                                                <option value="In School">In School</option>
+                                                <option value="in Cenima">in Cenima</option>
+                                                <option value="In Work">In Work</option>
+                                                <option value="In Meeting">In Meeting</option>
+                                                <option value="In Club">In Club</option>
+                                                <option value="Sleeping">Sleeping</option>
+                                                <option value="Emergency Calls Only">Emergency Calls Only</option>
+                                                <option value="Happy">Happy</option>
+                                            </select>
+                                        </div>
+										
+                                    </div>
+									
+									
+									 <div class="row">
+                                        <div class="form-group col-xs-12">
+                                            <label for="educaion">Education</label>
+                                            <textarea id="education" name="education" class="form-control" placeholder="Enter your Status" rows="2" cols="200"></textarea>
+                                        </div>
+                                    </div>
+									
+                                    <div class="row">
+                                        <div class="form-group col-xs-12">
+                                            <label for="information">Information</label>
+                                            <textarea id="information" name="information" class="form-control" placeholder="Enter your Status" rows="4" cols="400"></textarea>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="change()">Save Changes</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>OLE-Team © 2019. All rights reserved</p>
+    </div>
+
+
+
+    <!-- Scripts
+    ================================================= -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky-kit.min.js"></script>
+    <script src="js/jquery.scrollbar.min.js"></script>
+    <script src="js/script.js"></script>
+	<script type="text/javascript" src="na.js"></script>
+	
+	<script>
+	var id="" , mail="" , name="" ,password="",language="" ,gender="" ,phone="" ,photo="" ,birthday="" ,status="" ,active="" , education="" ,information="" ,avatar="";
+	
+	
+		
+		
+	      firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+               id= user.uid;
+               mail=user.email;
+			   
+			  			
+
+			  
+              firebase.database().ref("users").once('value', function(snapshot) {
+			  snapshot.forEach(function(childSnapshot) {	
+					var cKey = childSnapshot.key;
+					var cData = childSnapshot.val();
+				 	if( cKey == id){
+						fname = cData.firstname ;
+						lname = cData.lastname ;
+						password = cData.password ;
+						language = cData.language ;
+						gender = cData.gender ;
+						phone = cData.phone ;
+						photo = cData.photo ;
+						year = cData.year ;
+						month =cData.month ;
+						day = cData.day ;
+						status = cData.status ;
+						active = cData.active ;
+						education = cData.education ;
+						information = cData.information ;
+                        avatar=cData.avatar	;					
+//$("#navbar").append('<li id="m"><a id="mes_from" href="message.html">'+tran(' ' ,language ,'MESSAGE','m')+'</a></li>');
+//$("#navbar").append('<li id="g"><a id="mes_from" href="show_groups.html">'+tran(' ' ,language ,'GROUP','g')+'</a></li>');
+//$("#navbar").append('<li id="s"><a id="mes_from" href="setting.html">'+tran(' ' ,language ,'SETTING','s')+'</a></li>');
+//$("#navbar").append('<li id="l"><a id="mes_from" href="logout.html">'+tran(' ' ,language,'LOGOUT','l')+'</a></li>');
+
+						
+						  $("#firstname").val(fname);
+						  $("#lastname").val(lname);
+						  $("#email").val(mail);
+						  $("#phone").val(phone);
+						  $("#language").val(language);
+						  $("#year").val(year);
+						  $("#month").val(month);
+						  $("#day").val(day);
+						  $("#status").val(status);
+						  $("#education").append(education);
+						  $("#information").append(information);
+                       var storageRef = firebase.storage().ref();
+                         var spaceRef = storageRef.child(mail+'/'+avatar);
+                         storageRef.child(mail+'/'+avatar).getDownloadURL().then(function(url) {
+                        document.getElementById('myImage').src=url;
+
+                             }).catch(function(error) {
+                                   alert('erorrrrrrrr1!');
+                             });
+
+					}
+
+				  });
+				});
+	
+			  for( var i=1 ; i<=30 ; i++)
+				 {
+			  $("#day").append('<option value="'+i+'" >'+i+'</option>')
+			  }
+			  
+			  for( var i=1 ; i<=12 ; i++)
+				 {
+			  $("#month").append('<option value="'+i+'" >'+i+'</option>')
+			  }
+			  
+			  for( var i=2019 ; i>=1960 ; i--)
+				 {
+			  $("#year").append('<option value="'+i+'" >'+i+'</option>')
+			  }
+			  
+			  
+		  }else {
+            	window.location="index.html";
+			  }
+			});
+	
+
+		 function change()
+			  {
+				  
+				  						
+							  		  firstname=$("#firstname").val();
+							          lastname = $("#lastname").val();
+									  email    = $("#email").val();
+									  phone    = $("#phone").val();
+									  language = $("#language").val();
+									  year     = $("#year").val();
+									  month    = $("#month").val();
+									  day      = $("#day").val();
+									  status   = $("#status").val();
+									  education= $("#education").val();
+									  information=$("#information").val();
+
+				  					
+				  
+						  if( firstname && lastname && email && phone && language && year && month && day)
+						  {
+
+										firebase.database().ref('users/' + id).set({
+
+										  username : $("#firstname").val()+" "+$("#lastname").val(),
+										  firstname: $("#firstname").val(),
+										  lastname : $("#lastname").val(),
+										  email    : $("#email").val(),
+										  phone    : $("#phone").val(),
+										  language : $("#language").val(),
+										  year     : $("#year").val(),
+										  month    : $("#month").val(),
+										  day      : $("#day").val(),
+										  status   : $("#status").val(),
+										  education: $("#education").val(),
+										  information:$("#information").val(),
+                                          avatar:document.getElementById('myFile').value.replace(/C:\\fakepath\\/,""),
+
+            
+										  }, function(error) {
+											if (error) {
+											  alert(error);
+											} else {
+
+											  alert("Modified Successfully");
+											}
+										  });	
+
+
+						  }else
+						  {
+						  	confirm("Find Input Empty");
+						  }
+				 		
+						 
+					}
+				  
+				  
+			function email()
+			  {
+			  
+			  
+			  	alert(" Stop , Cannot Change Email");
+				$("#email").val(mail);  
+			  
+			  }
+		
+		
+
+     
+     
+	
+	
+	
+</script>	
+<script>
+		
+		
+		var translator = new Translator();
+		function tran( source=null ,target=null ,text=null,id=null)
+		{		var result = "";
+		
+				
+				config = {
+						from: source,
+						to: target,
+						api_key: 'AIzaSyBfgWAoQRuH-jXWQxDjD8GCcjsyKjka5ZU', // use your own key
+						callback: function (translatedText) {
+
+							$("#"+id+" #mes_from").html(translatedText)
+
+						}
+					
+				};
+				
+			   translator.translateLanguage(text, config);
+			 
+		
+		}
+
+	</script>	
+ 
+<script>
+     var storageRef = firebase.storage().ref();
+     var filename ;
+    function handleFileSelect(evt) {
+      evt.stopPropagation();
+      evt.preventDefault();
+      var file = evt.target.files[0];
+      var metadata = {
+        'contentType': file.type,
+      };
+
+      storageRef.child(mail+'/'+file.name).put(file, metadata).then(function(snapshot) {
+        console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+                         var spaceRef = storageRef.child(mail+'/'+avatar);
+                         storageRef.child(mail+'/'+avatar).getDownloadURL().then(function(url) {
+                              document.getElementById('myImage')
+                              .src = url;
+
+                             }).catch(function(error) {
+                                   alert('erorrrrrrrr!');
+                             });
+
+
+                                        firebase.database().ref('users/' + id).push({
+
+                                         avatar:file.name,
+
+                                          }, function(error) {
+                                            if (error) {
+                                              alert(error);
+                                            } else {
+                                            }
+                                    
+                                }).catch(function(error) {
+
+                                      var errorCode = error.code;
+                                      var errorMessage = error.message;
+                                         alert(errorMessage);
+                                    });
+        
+      }).catch(function(error) {
+        console.error('Upload failed:', error);
+      })} 
+    document.getElementById('myFile').addEventListener('change', handleFileSelect, false);
+    
+           
+</script>
+
+<script type="text/javascript">
+
+ </script>
+
+</body>
+</html>

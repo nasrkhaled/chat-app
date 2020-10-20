@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OLE</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style2.css" />
+    <link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CRubik:300,400,500,700,900"
+        rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-functions.js"></script>
+
+<!-- Comment out (or don't include) services that you don't want to use -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script> -->
+
+<script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+    authDomain: "real-7031f.firebaseapp.com",
+    databaseURL: "https://real-7031f.firebaseio.com",
+    projectId: "real-7031f",
+    storageBucket: "real-7031f.appspot.com",
+    messagingSenderId: "194214200891"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Header Section Starts-->
+    <header id="header-inverse">
+        <nav class="navbar navbar-default navbar-fixed-top menu">
+            <div class="container">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="home.html"><img src="images/olec.png"></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="navbar-form navbar-right hidden-sm">
+                     
+                    </div>
+                    <ul class="nav navbar-nav navbar-right main-menu">
+                        <li>
+                            <a href="home.html" class="" role="button" aria-haspopup="true" aria-expanded="false">Home
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="message.html" class="" role="button" aria-haspopup="true" aria-expanded="false">Message</a>
+
+                        </li>
+                        <li>
+                            <a href="show_groups.html" role="button" aria-haspopup="true" aria-expanded="false">Group</a>
+
+                        </li>
+                        <li><a href="setting.html">Setting</a></li>
+                        <li><a href="logout.html">Logout</a></li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav>
+    </header>
+    <!-- Header Section ends -->
+    <div class="profile-user-info">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <img id="imgInfo" class="img-center" src="">
+                </div>
+                <div class="col-md-9">
+                    <h2 id="nameInfo"></h2>
+                    <p id="infor">
+                    </p>
+
+
+                </div>
+            </div>
+
+
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-xs-6">
+                        <label for="firstname">E-mail</label>
+                        <span id="emailInfo" class="form-control input-group-lg "></span>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label for="firstname">Phone</label>
+                        <span id="phoneInfo" class="form-control input-group-lg "></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="firstname">Status</label>
+                        <span id="statusInfo" class="form-control input-group-lg "></span>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="firstname">Birth-Date</label>
+                        <span id="brithInfo" class="form-control input-group-lg "></span>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label for="firstname">Education</label>
+                        <span id="eduInfo" class="form-control input-group-lg "></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                     <a href="setting.html" style="float: right;">Setting</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="solve" style="height:150px;"></div>
+    <div class="copyright">
+            <p>OLEC-Team © 2019. All rights reserved</p>
+        </div>
+    <!-- Scripts
+    ================================================= -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+            url_cut = url.split('?'); 
+            urlArray = url_cut[1].split('=');
+            fid = urlArray[1];
+            
+            if(fid)
+            {
+                
+                
+    var id="" , mail="" , name="" ,password="",language="" ,gender="" ,phone="" ,photo="" ,birthday="" ,status="" ,active="" , education="" ,information="" ,avatar_url="" ;
+    
+          firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+               id= user.uid;
+               mail=user.email;
+              
+              
+              firebase.database().ref("users").once('value', function(snapshot) {
+              snapshot.forEach(function(childSnapshot) {    
+                    var cKey = childSnapshot.key;
+                    var cData = childSnapshot.val();
+                    if( cKey == fid){
+                        name = cData.username ;
+                        fname= cData.firstname ;
+                        lname = cData.lastname ;
+                        email = cData.email ;
+                        password = cData.password ;
+                        language = cData.language ;
+                        gender = cData.gender ;
+                        phone = cData.phone ;
+                        photo = cData.photo ;
+                        year = cData.year ;
+                        month =cData.month ;
+                        day = cData.day ;
+                        status = cData.status ;
+                        active = cData.active ;
+                        education = cData.education ;
+                        information = cData.information ;
+                        avatar  = cData.avatar_url ;
+                     document.getElementById('imgInfo').src=avatar;
+                     document.getElementById('nameInfo').innerHTML=name;
+                     document.getElementById('emailInfo').innerHTML=email;
+                     document.getElementById('phoneInfo').innerHTML=phone;
+                     document.getElementById('statusInfo').innerHTML=status;
+                     document.getElementById('brithInfo').innerHTML=day+'/'+month+'/'+year;
+                      document.getElementById('eduInfo').innerHTML=education;    
+                     if (information==undefined)
+                     {
+                         document.getElementById('infor').innerHTML= '<label>Information : </label>' ; 
+                     } 
+                     else
+                    {
+                         document.getElementById('infor').innerHTML= '<label>Information : '+information+'</label>'; 
+                    }
+                        
+                        
+                    }
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  });
+                });
+    
+    
+          }else {
+                window.location="index.html";
+              }
+            });
+    
+
+    
+    
+    
+                
+                
+            }else
+            {
+                
+                window.location="message.html";
+            }
+        
+    
+    
+    
+    
+</script>   
+    </script>
+</body>
+
+</html>

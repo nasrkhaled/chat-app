@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-functions.js"></script>
+
+    <!-- Comment out (or don't include) services that you don't want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script> -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+    authDomain: "real-7031f.firebaseapp.com",
+    databaseURL: "https://real-7031f.firebaseio.com",
+    projectId: "real-7031f",
+    storageBucket: "real-7031f.appspot.com",
+    messagingSenderId: "194214200891"
+  };
+  firebase.initializeApp(config);
+</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OLE</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery.scrollbar.css" />
+    <link rel="stylesheet" href="css/style2.css" />
+    <link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/emojionearea.min.css">
+    <link href="css/emoji.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CRubik:300,400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Leckerli+One|Merienda+One|Patrick+Hand|Shadows+Into+Light" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header Section Starts-->
+    <header id="header-inverse">
+        <nav class="navbar navbar-default navbar-fixed-top menu">
+            <div class="container">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="home.html"><img src="images/olec.png"></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right main-menu">
+                        <li>
+                            <a href="home.html" role="button" aria-haspopup="true" aria-expanded="false">Home </a>
+
+                        </li>
+
+                        <li>
+                            <a href="message.html" role="button" aria-haspopup="true" aria-expanded="false">Message</a>
+
+                        </li>
+                        <li>
+                            <a href="show_groups.html" class="active-link" role="button" aria-haspopup="true" aria-expanded="false">Group</a>
+
+                        </li>
+                        <li>
+                            <a href="setting.html" role="button" aria-haspopup="true" aria-expanded="false">Setting</a>
+
+                        </li>
+                        <li>
+                            <a href="logout.html" role="button" aria-haspopup="true" aria-expanded="false">Logout</a>
+
+                        </li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav>
+    </header>
+    <!-- Header Section ends -->
+
+    <div id="page-contents">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="chat-room">
+                    <div class="row">
+                        <div class="col-md-5">
+
+                            <input id="group_name" class="form-control" name="group_name" type="text" value="" placeholder="Enter Name Of Group" style="
+                            margin-top: 50px;
+                        ">
+                            <ul id="friend-content" class="nav nav-tabs contact-list scrollbar-wrapper scrollbar-outer">
+
+
+
+
+                            </ul>
+                            <!--Contact List in Left End-->
+
+                        </div>
+                        <div class="col-md-7">
+
+
+                            <div class="tab-content scrollbar-wrapper wrapper scrollbar-outer">
+                                <div class="tab-pane active" id="contact-1">
+                                    <div class="chat-body">
+                                        <ul class="chat-message" id="chat-content">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                            <div class="main">
+                                <div class="chat">
+                                    <div class="bottom">
+                                        <div class="input-group">
+
+
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" id="send" onclick="send()" type="button" style="
+                                                                            margin-top: 57px;
+ 
+    margin-left: 457px;
+    padding: 0 20px 0 15px;
+    position: absolute;
+    top: -68px;
+    bottom: 0;
+    background: transparent;
+    outline: none;
+    border: none;                                         "><i class="material-icons">send</i></button>
+
+                                            </span>
+
+                                        </div>
+                                        <div class="position-relative w-100">
+
+
+                                            <textarea class="form-control" id="mesg" placeholder="Start typing for reply..." rows="1"></textarea>
+
+
+                                            <button class="btn voice" id="recordButton"><i class="material-icons">keyboard_voice</i></button>
+                                            <button class="btn voice voice2" id="stopButton" style="display:none;"><i class="material-icons">keyboard_voice</i></button>
+
+                                        </div>
+
+                                        <label>
+                                            <input type="file" id="but" value="" />
+
+                                            <span class="btn attach d-sm-block d-none"><i class="material-icons" style="
+													color: #fff;">attach_file</i></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="controls">
+
+                            <div id="results">
+                                <span id="final_span" class="final"></span>
+                                <span id="interim_span" class="interim"></span>
+                                <span id="id1" style="display: none;"></span>
+                            </div>
+
+                            <audio id='audio' style="  margin-left: 500px;"></audio>
+                            <audio id='audiotag' style="display: none;"></audio>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="copyright" style=" margin-top: 50px;">
+            <p>OLEC-Team © 2019. All rights reserved</p>
+        </div>
+    </div>
+    <!-- Scripts
+    ================================================= -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky-kit.min.js"></script>
+    <script src="js/jquery.scrollbar.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/emojionearea.min.js"></script>
+    <script>
+        $(".emoji").emojioneArea({
+            pickerPosition: "top"
+        })
+        var key = "it150ole";
+
+        function enc(text, key) {
+            encrypted = CryptoJS.AES.encrypt(text, key);
+            var x = encrypted.toString();
+            return x;
+        }
+
+
+        function dec(detext, key) {
+            decrypted = CryptoJS.AES.decrypt(detext, key);
+
+            var x = decrypted.toString(CryptoJS.enc.Utf8);
+            return x;
+
+        }
+
+
+
+        function date() {
+            var currentdate = new Date();
+            var datetime = currentdate.getDate() + "/" +
+                (currentdate.getMonth() + 1) + "/" +
+                currentdate.getFullYear();
+            return datetime;
+
+        }
+
+        function time() {
+            var currentdate = new Date();
+            var datetime = currentdate.getHours() + ":" +
+                currentdate.getMinutes() + ":" +
+                currentdate.getSeconds();
+            return datetime;
+        }
+
+
+        var id = "";
+        var mail = "";
+        var name = "";
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                id = user.uid;
+                mail = user.email;
+
+                firebase.database().ref("users").once('value', function(snapshot) {
+                    snapshot.forEach(function(childSnapshot) {
+                        var cKey = childSnapshot.key;
+                        var cData = childSnapshot.val();
+                        if (cKey == id) {
+                            name = cData.username;
+
+                        }
+
+
+                    });
+                });
+
+
+            } else {
+                window.location = "index.html";
+            }
+        });
+
+
+
+        var to_user = "";
+        var to_mail = "";
+        var to_uid = "";
+
+        var list_user = [];
+        var r = firebase.database().ref("messages/one");
+        r.once('value', function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+                var chKey = childSnapshot.key;
+                var chData = childSnapshot.val();
+
+                if (chData.from_user_id == id || chData.to_user_id == id) {
+                    to_user = chData.to_username;
+                    to_mail = chData.to_email;
+                    to_uid = chData.to_user_id;
+                    if (chData.to_user_id == id) {
+                        if (list_user.includes(chData.from_email)) {} else {
+                            firebase.database().ref("users").once('value', function(snapshot) {
+                                snapshot.forEach(function(childSnapshot) {
+                                    var cKey1 = childSnapshot.key;
+                                    var cData1 = childSnapshot.val();
+                                    if (cData1.email == chData.from_email) {
+                                        avatar = cData1.avatar_url;
+                                        $("#friend-content").append('<li id="' + chKey + '" class="active"><a href=""><div class="contact3"><div class="msg-preview"><input id="user" name="user[]"  type="checkbox" value="' + chData.from_user_id + '"/><img src="' + avatar + '" alt="" class="profile-photo-sm pull-left" /><h4 for="user" >' + chData.from_username + '</h4></div></div></a></li>');
+
+
+                                    }
+                                })
+                            });
+
+
+                            list_user.push(chData.from_email);
+                        }
+
+                    } else if (chData.from_user_id == id) {
+                        if (list_user.includes(chData.to_email)) {} else {
+                            firebase.database().ref("users").once('value', function(snapshot) {
+                                snapshot.forEach(function(childSnapshot) {
+                                    var cKey1 = childSnapshot.key;
+                                    var cData1 = childSnapshot.val();
+                                    if (cData1.email == chData.to_email) {
+
+                                        //alert(cData1.email);
+                                        $("#friend-content").append('<li id="' + chKey + '" class="active"><a href=""><div class="contact3"><div class="msg-preview"><input id="user" name="user[]"  type="checkbox" value="' + chData.to_user_id + '"/><img src="' + cData1.avatar_url + '" alt="" class="profile-photo-sm pull-left" /><h4 for="user">' + chData.to_username + '</h4></div></div></a></li>');
+                                    }
+                                })
+                            });
+
+                            list_user.push(chData.to_email);
+                        }
+                    }
+
+
+                }
+
+            });
+        });
+
+
+
+        var group_name = "";
+        var checks = [];
+        var list_email = [];
+        var group_id = "";
+
+        function checkAdult(item) {
+            return item;
+        }
+
+        function send() {
+            var message = $("#mesg").val();
+            var encrypted = enc(message, key);
+            var audio_text = document.getElementById('id1').innerHTML;
+            var audioEncrypt = enc(audio_text, key);
+            group_name = document.getElementById("group_name").value;
+            if (!group_name) {
+                alert("Please Enter Name To Group And Select user");
+            }
+
+            checks = $('input[type="checkbox"]:checked').map(function() {
+                //alert(values.filter(checkAdult));
+                return $(this).val();
+                ///////////////////////////// how remove from array ///////////////////////
+            }).get();
+            if (checks.length == 0) {
+                alert("Please Select group")
+            }
+
+            group_id = id + checks.join('');
+
+            if (group_name) {
+
+                if (message) {
+                    var values = [];
+                    $('input[type="checkbox"]:checked').each(function() {
+                        values.push($(this).val());
+                    });
+                    firebase.database().ref('messages/group/' + group_id).push({
+
+                        g_name: group_name,
+                        g_id: group_id,
+                        msg: encrypted,
+                        from_email: mail,
+                        from_user_id: id,
+                        from_username: name,
+                        audio_translated: audioEncrypt,
+                        to_users_id: values.filter(checkAdult),
+                        // to_username : cData.username,
+                        time: time(),
+                        date: date(),
+                        created_by: name,
+                        created_by_mail:mail,
+                        avatar_url: "https://firebasestorage.googleapis.com/v0/b/real-7031f.appspot.com/o/group%2Fgroupes.jpg?alt=media&token=ce579b51-5a9a-485b-80f4-af15dc1e6b7f",
+                    }).then(function() {
+                        $("#mesg").val(' ');
+                        window.location = "show_groups.html";
+
+                    });
+                } else {
+                    alert("message is empty!");
+                }
+
+            }
+
+        }
+
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script> -->
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+            authDomain: "real-7031f.firebaseapp.com",
+            databaseURL: "https://real-7031f.firebaseio.com",
+            projectId: "real-7031f",
+            storageBucket: "real-7031f.appspot.com",
+            messagingSenderId: "194214200891"
+        };
+        firebase.initializeApp(config);
+
+    </script>
+    <script>
+        var storageRef = firebase.storage().ref();
+
+        function handleFileSelect(evt) {
+            //alert("dsds");
+            evt.stopPropagation();
+            evt.preventDefault();
+            var file = evt.target.files[0];
+            var metadata = {
+                'contentType': file.type
+            };
+            storageRef.child('group_media/' + file.name).put(file, metadata).then(function(snapshot) {
+                console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+                console.log(snapshot.metadata);
+                var url = snapshot.metadata.downloadURLs[0];
+                //alert(url);
+                console.log('File available at', url);
+                document.getElementById("mesg").innerHTML = file.name;
+
+            }).catch(function(error) {
+                alert('Upload failed:', error);
+            });
+
+        }
+
+
+        document.getElementById('but').addEventListener('change', handleFileSelect);
+
+    </script>
+    <script type="text/javascript">
+        var filename = new Date().toISOString() + "_record";
+        URL = window.URL || window.webkitURL;
+        var langs = "";
+        firebase.database().ref("users").once('value', function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+                var cKey = childSnapshot.key;
+                var cData = childSnapshot.val();
+                if (cKey == id) {
+                    langs = cData.language;
+                    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+                    var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+                    var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+                    var colors = ['aqua', 'azure', 'beige', 'bisque', 'black', 'blue', 'brown',
+                        'chocolate', 'coral', 'crimson', 'cyan', 'fuchsia', 'ghostwhite', 'gold',
+                        'goldenrod', 'gray', 'green', 'indigo', 'ivory', 'khaki', 'lavender',
+                        'lime', 'linen', 'magenta', 'maroon', 'moccasin', 'navy', 'olive', 'orange',
+                        'orchid', 'peru', 'pink', 'plum', 'purple', 'red', 'salmon', 'sienna',
+                        'silver', 'snow', 'tan', 'teal', 'thistle', 'tomato', 'turquoise', 'violet',
+                        'white', 'yellow'
+                    ];
+                    var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ') +
+                        ' ;'
+
+                    var recognition = new SpeechRecognition();
+                    var speechRecognitionList = new SpeechGrammarList();
+                    speechRecognitionList.addFromString(grammar, 1);
+                    recognition.grammars = speechRecognitionList;
+                    //recognition.continuous = false;
+
+                    recognition.lang = langs;
+                    recognition.interimResults = false;
+                    recognition.maxAlternatives = 1;
+
+                    recognition.onresult = function(event) {
+                        var au_tag = document.getElementById('audiotag');
+                        var last = event.results.length - 1;
+                        var color = event.results[last][0].transcript;
+                        document.getElementById('id1').innerHTML = color;
+                        au_tag.controls = true;
+                        au_tag.src = 'https://code.responsivevoice.org/getvoice.php?t=' + color +
+                            '&tl=ar';
+                        au_tag.controlsList = 'nodownload';
+
+                    }
+
+                    recognition.onnomatch = function(event) {
+                        alert("I didn't recognise that color.");
+                    }
+
+                    recognition.onerror = function(event) {
+                        alert('Error occurred in recognition: ' + event.error);
+                    }
+
+
+
+
+
+
+
+
+                    var gumStream;
+                    var rec;
+                    var input;
+                    var AudioContext = window.AudioContext || window.webkitAudioContext;
+                    var audioContext;
+                    var recordButton = document.getElementById("recordButton");
+                    var stopButton = document.getElementById("stopButton");
+                    recordButton.addEventListener("click", startRecording);
+                    stopButton.addEventListener("click", stopRecording);
+
+                    function startRecording() {
+
+                        recognition.start();
+                        console.log("recordButton clicked");
+                        var constraints = {
+                            audio: true,
+                            video: false
+                        }
+                        recordButton.style.display = "none";
+                        stopButton.style.display = "inline";
+                        stopButton.style.color = "#f13636";
+                        navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+                            console.log(
+                                "getUserMedia() success, stream created, initializing Recorder.js ..."
+                            );
+                            audioContext = new AudioContext();
+                            gumStream = stream;
+                            input = audioContext.createMediaStreamSource(stream);
+                            rec = new Recorder(input, {
+                                numChannels: 1
+                            })
+                            rec.record()
+                            console.log("Recording started");
+                        }).catch(function(err) {
+                            alert(error);
+                        });
+                        var input = document.getElementById('mesg');
+                    };
+
+                    function stopRecording() {
+                        console.log("stopButton clicked");
+                        stopButton.style.display = "none";
+                        recordButton.style.display = "inline";
+                        //rec.stop();
+                        gumStream.getAudioTracks()[0].stop();
+                        rec.exportWAV(createDownloadLink);
+
+                        recognition.stop();
+
+
+                    }
+
+                    function createDownloadLink(blob) {
+
+
+                        var url = URL.createObjectURL(blob);
+                        var au = document.getElementById('audio');
+                        au.controls = true;
+                        au.src = url;
+                        au.controlsList = "nodownload";
+
+
+
+
+                        var storageRef = firebase.storage().ref();
+                        var file = blob;
+                        var metadata = {
+                            'contentType': file.type
+                        };
+                        storageRef.child('recordes/' + filename + '.wav').put(file, metadata).then(
+                            function(snapshot) {
+                                console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+                                console.log(snapshot.metadata);
+                                var url = snapshot.metadata.downloadURLs[0];
+                                //alert(url);
+                                console.log('File available at', url);
+                                document.getElementById('mesg').value = filename + '.wav';
+
+                            }).catch(function(error) {
+                            console.error('Upload failed:', error);
+                        });
+
+
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

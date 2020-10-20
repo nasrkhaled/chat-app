@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-functions.js"></script>
+
+    <!-- Comment out (or don't include) services that you don't want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script> -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+    authDomain: "real-7031f.firebaseapp.com",
+    databaseURL: "https://real-7031f.firebaseio.com",
+    projectId: "real-7031f",
+    storageBucket: "real-7031f.appspot.com",
+    messagingSenderId: "194214200891"
+  };
+  firebase.initializeApp(config);
+
+</script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OLE</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery.scrollbar.css" />
+    <link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/emojionearea.min.css">
+    <link rel="stylesheet" href="css/style2.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CRubik:300,400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Leckerli+One|Merienda+One|Patrick+Hand|Shadows+Into+Light" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+    <!-- Header Section Starts-->
+    <header id="header-inverse">
+        <nav class="navbar navbar-default navbar-fixed-top menu">
+            <div class="container">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="home.html"><img src="images/olec.png"></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="navbar-form navbar-right hidden-sm">
+                        <div class="form-group">
+
+                            <input class="form-control" id="search" type="text" placeholder="Search Email Or Phone" onkeypress="Search(event)">
+                        </div>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right main-menu">
+                        <li>
+                            <a href="home.html" class="" role="button" aria-haspopup="true" aria-expanded="false">Home
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="message.html" class="active-link" role="button" aria-haspopup="true" aria-expanded="false">Message</a>
+
+                        </li>
+                        <li>
+                            <a href="show_groups.html" role="button" aria-haspopup="true" aria-expanded="false">Group</a>
+
+                        </li>
+                        <li><a href="setting.html">Setting</a></li>
+                        <li><a href="logout.html">Logout</a></li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav>
+    </header>
+    <!-- Header Section ends -->
+
+    <div id="page-contents">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="chat-room">
+                    <div class="row">
+                        <div class="col-md-5 friend-content">
+
+
+                            <ul id="friend-content" class="nav nav-tabs contact-list scrollbar-wrapper scrollbar-outer">
+
+
+
+
+                            </ul>
+                            <!--Contact List in Left End-->
+
+                        </div>
+                        <div class="col-md-7" id="col-md-7">
+
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="contact-1">
+                                    <div class="chat-body" id='body'>
+                                        <ul class="chat-message" id="chat-content">
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="main">
+                                <div class="chat">
+                                    <div class="bottom">
+                                        <div class="input-group">
+
+
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" id="send" onclick="send()" type="button" style="
+                                                                            margin-top: 57px;
+ 
+    margin-left: 457px;
+    padding: 0 20px 0 15px;
+    position: absolute;
+    top: -68px;
+    bottom: 0;
+    background: transparent;
+    outline: none;
+    border: none;                                         "><i class="material-icons">send</i></button>
+
+                                            </span>
+
+                                        </div>
+                                        <div class="position-relative w-100">
+
+
+                                            <textarea class="form-control" id="mesg" placeholder="Start typing for reply..." rows="1"></textarea>
+
+
+                                            <button class="btn voice" id="recordButton"><i class="material-icons">keyboard_voice</i></button>
+                                            <button class="btn voice voice2" id="stopButton" style="display:none;"><i class="material-icons">keyboard_voice</i></button>
+
+                                        </div>
+
+                                        <label>
+                                            <input type="file" id="but" value="" />
+
+                                            <span class="btn attach d-sm-block d-none"><i class="material-icons" style="
+													color: #fff;">attach_file</i></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+
+                            <div id="controls">
+
+                                <div id="results">
+                                    <span id="final_span" class="final"></span>
+                                    <span id="interim_span" class="interim"></span>
+                                    <span id="id1" style="display: none;"></span>
+                                </div>
+
+                                <audio id='audio' style="  margin-left: 500px;"></audio>
+                                <audio id='audiotag' style="display: none;"></audio>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- profile -->
+        <div id="my-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img id="imgInfo" class="img-center" src="">
+                        </div>
+                        <div class="col-md-9">
+                            <h2 id="nameInfo"></h2>
+                            <p id="details"></p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <label for="firstname">E-mail</label>
+                            <span id="emailInfo" class="form-control input-group-lg "></span>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="firstname">Phone</label>
+                            <span id="phoneInfo" class="form-control input-group-lg "></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-3">
+                            <label for="firstname">Status</label>
+                            <span id="statusInfo" class="form-control input-group-lg "></span>
+                        </div>
+                        <div class="form-group col-xs-3">
+                            <label for="firstname">Birth-Date</label>
+                            <span id="brithInfo" class="form-control input-group-lg "></span>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="firstname">Education</label>
+                            <span id="eduInfo" class="form-control input-group-lg "></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- profile -->
+        <!-- profile -->
+        <!-- profile -->
+        <!-- profile -->
+
+        <div class="copyright">
+            <p>OLEC-Team © 2019. All rights reserved</p>
+        </div>
+        <!-- Scripts
+    ================================================= -->
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/emojionearea.min.js"></script>
+        <script src="js/jquery.sticky-kit.min.js"></script>
+        <script src="js/jquery.scrollbar.min.js"></script>
+
+        <script type="text/javascript" src="na.js"></script>
+
+        <script>
+            $(".emoji").emojioneArea({
+                pickerPosition: "top"
+            });
+            var key = "it150ole";
+
+            function enc(text, key) {
+                encrypted = CryptoJS.AES.encrypt(text, key);
+                var x = encrypted.toString();
+                return x;
+            }
+
+
+            function dec(detext, key) {
+                decrypted = CryptoJS.AES.decrypt(detext, key);
+
+                var x = decrypted.toString(CryptoJS.enc.Utf8);
+                return x;
+
+            }
+
+
+
+
+            function date() {
+                var currentdate = new Date();
+                var datetime = currentdate.getDate() + "/" +
+                    (currentdate.getMonth() + 1) + "/" +
+                    currentdate.getFullYear();
+                return datetime;
+
+            }
+
+            function time() {
+                var currentdate = new Date();
+                var datetime = currentdate.getHours() + ":" +
+                    currentdate.getMinutes() + ":" +
+                    currentdate.getSeconds();
+                return datetime;
+            }
+            var id = "";
+            var mail = "";
+            var name = "";
+            var f_id = "";
+            var f_name = "";
+            var f_email = "";
+            var myphone = "";
+            var lang = "";
+            var d = "";
+            var avatar = "";
+
+
+
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    id = user.uid;
+                    mail = user.email;
+                    //  alert(id + "    " + mail);
+
+
+                    firebase.database().ref("users").once('value', function(snapshot) {
+                        snapshot.forEach(function(childSnapshot) {
+                            var cKey = childSnapshot.key;
+                            var cData = childSnapshot.val();
+                            if (cKey == id) {
+                                name = cData.username;
+                                myphone = cData.phone;
+                                lang = cData.language;
+                                avatar_url = cData.avatar_url;
+                                $("#friend-content").append(
+                                    '<li  class="active" id="active"><a href="profile2.html?id=' +
+                                    id + '"><div class="contact"><img src="' + avatar_url +
+                                    '" alt="" class="profile-photo-sm pull-left" /><div class="msg-preview"><h4>' +
+                                    mail + '</h4></div></div></a></li>');
+                            }
+
+
+                        });
+                    });
+
+
+
+
+
+                    //$("#navbar").append('<li id="m"><a id="mes_from" href="message.html">'+tran(' ' ,lang ,'MESSAGE','m')+'</a></li>');
+                    //$("#navbar").append('<li id="g"><a id="mes_from" href="show_groups.html">'+tran(' ' ,lang ,'GROUP','g')+'</a></li>');
+                    //$("#navbar").append('<li id="s"><a id="mes_from" href="setting.html">'+tran(' ' ,lang ,'SETTING','s')+'</a></li>');
+                    //$("#navbar").append('<li id="l"><a id="mes_from" href="logout.html">'+tran(' ' ,lang,'LOGOUT','l')+'</a></li>');
+
+
+                    var to_user = "";
+                    var to_mail = "";
+                    var to_uid = "";
+
+                    var list_user = [];
+                    var r = firebase.database().ref("messages/one");
+                    r.once('value', function(snapshot) {
+                        snapshot.forEach(function(childSnapshot) {
+                            var chKey = childSnapshot.key;
+                            var chData = childSnapshot.val();
+
+
+                            if (chData.from_user_id == id || chData.to_user_id == id) {
+                                to_user = chData.to_username;
+                                to_mail = chData.to_email;
+                                to_uid = chData.to_user_id;
+
+                                if (chData.to_user_id == id) {
+                                    if (list_user.includes(chData.from_email)) {} else {
+
+                                        firebase.database().ref("users").once('value', function(
+                                            snapshot) {
+                                            snapshot.forEach(function(childSnapshot) {
+                                                var cKey1 = childSnapshot.key;
+                                                var cData = childSnapshot.val();
+                                                if (cKey1 == chData.from_user_id) {
+                                                    avatar = cData.avatar_url;
+                                                    var decrypted = dec(chData.msg,
+                                                        key);
+                                                    var id = "'" + chData.from_user_id + "'";
+                                                    $("#friend-content").append(
+                                                        '<li id="' + chKey +
+                                                        '" class="active"><a href="?uid=' +
+                                                        chData.from_user_id +
+                                                        '&name=' + chData.from_username +
+                                                        '&email=' + chData.from_email +
+                                                        '"><div class="contact"><img src="' +
+                                                        avatar +
+                                                        '" alt="" class="profile-photo-sm pull-left" /><div class="msg-preview"><h4>' +
+                                                        chData.from_username
+                                                        .replace('%20', ' ') +
+                                                        '</h4><p id="mes_from" class="text-muted">' +
+                                                        tran(' ', lang,
+                                                            decrypted,
+                                                            chKey) +
+                                                        '</p><small class="text-muted">' +
+                                                        chData.time +
+                                                        '</small></div></div></a><a style="border: none;position: absolute;top: 65px;right: 10px;background: #27aae1;color: #fff;padding: 5px;margin: 0;border-radius: 4px" id="' +
+                                                        chData.from_user_id +
+                                                        '"onclick="myProfile(' +
+                                                        id +
+                                                        ')">Profile</a></li>'
+                                                    );
+
+                                                }
+                                            })
+                                        });
+
+                                        list_user.push(chData.from_email);
+                                    }
+
+                                } else if (chData.from_user_id == id) {
+                                    if (list_user.includes(chData.to_email)) {} else {
+
+
+                                        firebase.database().ref("users").once('value', function(
+                                            snapshot) {
+                                            snapshot.forEach(function(childSnapshot) {
+                                                var cKey = childSnapshot.key;
+                                                var cData = childSnapshot.val();
+                                                if (cData.email == chData.to_email) {
+
+                                                    var decrypted = dec(chData.msg,
+                                                        key);
+
+                                                    var avatar_url = cData.avatar_url;
+                                                    var id = "'" + chData.to_user_id + "'";
+                                                    $("#friend-content").append(
+
+                                                        '<li id="' + chKey +
+                                                        '" class="active"><a href="?uid=' +
+                                                        chData.to_user_id +
+                                                        '&name=' + chData.to_username +
+                                                        '&email=' + chData.to_email +
+                                                        '"><div class="contact"><img src="' +
+                                                        avatar_url +
+                                                        '" alt="not-found" class="profile-photo-sm pull-left" /><div class="msg-preview"><h4>' +
+                                                        chData.to_username.replace(
+                                                            '%20', ' ') +
+                                                        '</h4><p id="mes_from" class="text-muted">' +
+                                                        tran(' ', lang, decrypted,
+                                                        chKey) +
+                                                        '</p><small class="text-muted">' +
+                                                        chData.time +
+                                                        '</small></div></div></a><a style="border: none;position: absolute;top: 65px;right: 10px;background: #27aae1;color: #fff;padding: 5px;margin: 0;border-radius: 4px" id="' +
+                                                        id +
+                                                        '"onclick="myProfile(' +
+                                                        id +
+                                                        ')">Profile</a></li>'
+                                                    );
+                                                }
+
+
+                                            });
+                                        });
+
+
+
+                                        list_user.push(chData.to_email);
+                                    }
+                                }
+
+
+                            }
+
+                        });
+                    });
+
+                    //       });
+                    //      });
+                    /********************************************************************/
+                    var url = document.URL;
+                    url_cut = url.split('?');
+                    urlArray = url_cut[1].split('&');
+                    f_id = urlArray[0];
+                    f_name = urlArray[1];
+                    f_email = urlArray[2];
+                    f_id = f_id.substr(4);
+                    f_name = f_name.substr(5).replace('%20', ' ');
+                    f_email = f_email.substr(6);
+                    //alert(f_name);
+                    if (f_id !== " " && f_name !== " " && f_email !== " ") {
+
+
+
+
+
+
+
+                        var ref = firebase.database().ref("messages/one");
+
+                        ref.once('value', function(snapshot) {
+                            snapshot.forEach(function(childSnapshot) {
+                                var childKey = childSnapshot.key;
+                                var childData = childSnapshot.val();
+                                if (childData.from_user_id == id && childData.to_user_id ==
+                                    f_id) {
+
+
+
+
+                                    //$("#chat-content").append('<li class="right" id="'+childKey+'"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">'+childData.from_username+'</h5><small class="text-muted" id="time_from">'+childData.time+'</small></div><p id="mes_from">'+childData.msg+'</p></div></li>');
+
+
+                                } else if (childData.to_user_id == id && childData.from_user_id ==
+                                    f_id) {
+
+
+                                    //$("#chat-content").append('<li id="'+childKey+'" class="left"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">'+childData.from_username+'</h5><small class="text-muted" id="time_from">'+childData.time+'</small></div><p id="mes_from">'+childData.msg+'</p></div></li>');
+
+                                }
+
+                            });
+                        });
+
+
+                        var ids = [];
+
+                        var commentsRef = firebase.database().ref('messages/one');
+                        commentsRef.on('child_added', function(data) {
+                            var childKey = data.key;
+                            var childData = data.val();
+                            if (childData.from_user_id == id && childData.to_user_id == f_id) {
+                                firebase.database().ref("users").once('value', function(snapshot) {
+                                    snapshot.forEach(function(childSnapshot) {
+                                        var cKey = childSnapshot.key;
+                                        var cData = childSnapshot.val();
+                                        if (cKey == id) {
+                                            var decrypted = dec(childData.msg, key);
+                                            if (
+                                                decrypted.includes('.jpg') === true ||
+                                                decrypted.includes('.png') === true ||
+                                                decrypted.includes('.gif') === true ||
+                                                decrypted.includes('.jpeg') === true
+                                            ) {
+                                                var storageRef = firebase.storage().ref();
+                                                var spaceRef = storageRef.child(
+                                                    'images/' + decrypted);
+                                                storageRef.child('images/' + decrypted)
+                                                    .getDownloadURL().then(function(
+                                                        url) {
+                                                        $("#chat-content").append(
+                                                            '<li class="img-r" id="' +
+                                                            childKey +
+                                                            '"><div class="chat-item " style="    background: transparent;"><div class="chat-item-header"></div><img id="img_from" src="' +
+                                                            url +
+                                                            '"style="width: 52%; margin-left: 50%;"/><small class="text-muted" id="time_from"style=" position: absolute; bottom: -20px;right: 20px;">' +
+                                                            childData.time +
+                                                            '</small></li>');
+
+                                                    }).catch(function(error) {
+                                                        alert('erorrrrrrrr!');
+                                                    });
+
+                                            } else if (
+                                                decrypted.includes('.mp4') === true ||
+                                                decrypted.includes('.webm') === true ||
+                                                decrypted.includes('.ogg') === true
+
+                                            ) {
+                                                var storageRef = firebase.storage().ref();
+                                                var spaceRef = storageRef.child(
+                                                    'images/' + decrypted);
+                                                storageRef.child('images/' + decrypted)
+                                                    .getDownloadURL().then(function(
+                                                        url) {
+                                                        $("#chat-content").append(
+                                                            '<li class="img-r" id="' +
+                                                            childKey +
+                                                            '"><div class="chat-item"><div class="chat-item-header"></div><video width="320" height="240" controls><source src="' +
+                                                            url +
+                                                            '" type="video/mp4"></video><small class="text-muted" id="time_from"style="display: flex;justify-content: flex-end;margin-right: 82px;margin-top: 10px;">' +
+                                                            childData.time +
+                                                            '</small></li>');
+
+                                                    }).catch(function(error) {
+                                                        alert(error);
+                                                    });
+                                            } else if (decrypted.includes('.txt') ===
+                                                true ||
+                                                decrypted.includes('.pdf') === true ||
+                                                decrypted.includes('.css') === true ||
+                                                decrypted.includes('.php') === true ||
+                                                decrypted.includes('.html') === true ||
+                                                decrypted.includes('.js') === true ||
+                                                decrypted.includes('.ppt') === true ||
+                                                decrypted.includes('.json') === true ||
+                                                decrypted.includes('.sql') === true ||
+                                                decrypted.includes('.doc') === true ||
+                                                decrypted.includes('.zip') === true) {
+                                                var storageRef = firebase.storage().ref();
+                                                var spaceRef = storageRef.child(
+                                                    'images/' + decrypted);
+                                                storageRef.child('images/' + decrypted)
+                                                    .getDownloadURL().then(function(
+                                                        url) {
+                                                        $("#chat-content").append(
+                                                            '<li class="right" id="' +
+                                                            childKey +
+                                                            '"><div class="chat-item"><div class="chat-item-header"></div><a style="text-decoration: underline;cursor: pointer;color: #0e0ed8;" href="' +
+                                                            url +
+                                                            '" download="' +
+                                                            decrypted + '">' +
+                                                            decrypted +
+                                                            '</a></div><small class="text-muted" id="time_from"style="display: flex;justify-content: flex-end;margin-right: 82px;margin-top: 10px;">' +
+                                                            childData.time +
+                                                            '</small></li>');
+
+                                                    }).catch(function(error) {
+                                                        alert('erorrrrrrrr!here');
+                                                    });
+                                            } else if (decrypted.includes('.com') ===
+                                                true ||
+                                                decrypted.includes('www') ===
+                                                true ||
+                                                decrypted.includes('.org') === true ||
+                                                decrypted.includes('.edu') === true ||
+                                                decrypted.includes('.net') === true
+                                            ) {
+                                                $("#chat-content").append(
+                                                    '<li class="right" id="' +
+                                                    childKey +
+                                                    '"><div class="chat-item"><div class="chat-item-header"></div><a target="_blank" style="cursor: pointer;color: #0e0ed8;" href="' +
+                                                    decrypted + '">' + decrypted +
+                                                    '</a></div><small class="text-muted" id="time_from"style="display: flex;justify-content: flex-end;margin-right: 82px;margin-top: 10px;">' +
+                                                    childData.time +
+                                                    '</small></li>');
+                                            } else if (decrypted.includes('_record.wav') ===
+                                                true
+
+                                            ) {
+                                                var storageRef = firebase.storage().ref();
+                                                var spaceRef = storageRef.child(
+                                                    'recordes/' + decrypted);
+                                                storageRef.child('recordes/' +
+                                                    decrypted).getDownloadURL().then(
+                                                    function(url) {
+                                                        $("#chat-content").append(
+                                                            '<li class="img-r" id="' +
+                                                            childKey +
+                                                            '"><div class="chat-item after" style="    background: transparent;"><div class="chat-item-header"></div><audio src="' +
+                                                            url +
+                                                            '" controls controlsList="nodownload"></audio><small class="text-muted" id="time_from"style="position: absolute; right: 20px;    bottom: -20px;">' +
+                                                            childData.time +
+                                                            '</small></li>');
+
+                                                    }).catch(function(error) {
+                                                    alert(error);
+                                                });
+
+                                            } else {
+
+
+                                                $("#chat-content").append(
+                                                    '<li class="right" id="' +
+                                                    childKey +
+                                                    '"><div class="chat-item"><div class="chat-item-header"></div><p id="mes_from">' +
+                                                    tran(' ', lang, decrypted,
+                                                        childKey) +
+                                                    '</p></div><small class="text-muted" id="time_from" style="display: flex;justify-content: flex-end;margin-right: 82px;margin-top: 10px;">' +
+                                                    childData.time +
+                                                    '</small></li>');
+
+                                            }
+                                        }
+                                    });
+                                });
+
+
+
+
+                            } else if (childData.to_user_id == id && childData.from_user_id == f_id) {
+                                firebase.database().ref("users").once('value', function(snapshot) {
+                                    snapshot.forEach(function(childSnapshot) {
+                                        var cKey = childSnapshot.key;
+                                        var cData = childSnapshot.val();
+                                        var decrypted = dec(childData.msg, key);
+                                        if (cData.email == f_email) {
+                                            if (decrypted.includes('.jpg') === true ||
+                                                decrypted.includes('.png') === true ||
+                                                decrypted.includes('.gif') === true ||
+                                                decrypted.includes('.jpeg') === true) {
+                                                var storageRef = firebase.storage().ref();
+                                                var spaceRef = storageRef.child(
+                                                    'images/' + decrypted);
+                                                storageRef.child('images/' + decrypted)
+                                                    .getDownloadURL().then(function(
+                                                        url) {
+                                                        $("#chat-content").append(
+                                                            '<li id="' + childKey + '" class="img-left"><img src="' + cData.avatar_url + '" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">' + childData.from_username + '</h5></div><p id="mes_from"><img src="' + url + '" style="width:70%;height:20%;"/></div><small style="margin-bottom: 26px;display: block;position: relative;margin-left: 30px;margin-top: -20px;" class="text-muted" id="time_from">' + childData.time + '</small></li>'
+                                                        );
+
+                                                    }).catch(function(error) {
+                                                        alert('erorrrrrrrr!');
+                                                    });
+                                            } else if (decrypted.includes('.mp4') ===
+                                                true ||
+                                                decrypted.includes('.webm') === true ||
+                                                decrypted.includes('.ogg') === true
+                                            ) {
+                                                var storageRef = firebase.storage().ref();
+                                                var spaceRef = storageRef.child(
+                                                    'images/' + decrypted);
+                                                storageRef.child('images/' + decrypted)
+                                                    .getDownloadURL().then(function(
+                                                        url) {
+                                                        $("#chat-content").append(
+                                                            '<li id="' +
+                                                            childKey +
+                                                            '" class="img-left"><img src="' +
+                                                            cData.avatar_url +
+                                                            '" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">' +
+                                                            childData.from_username +
+                                                            '</h5></div><video width="320" height="240" controls><source src="' +
+                                                            url +
+                                                            '" type="video/mp4"></video></div><small style="    margin-bottom: 26px;display: block;position: relative;margin-left: 30px;margin-top: -20px;" class="text-muted all-style" id="time_from">' +
+                                                            childData.time +
+                                                            '</small></li>'
+                                                        );
+
+                                                    }).catch(function(error) {
+                                                        alert('erorrrrrrrr!');
+                                                    });
+                                            } else if (decrypted.includes('.txt') ===
+                                                true ||
+                                                decrypted.includes('.pdf') === true ||
+                                                decrypted.includes('.css') === true ||
+                                                decrypted.includes('.php') === true ||
+                                                decrypted.includes('.html') === true ||
+                                                decrypted.includes('.js') === true ||
+                                                decrypted.includes('.ppt') === true ||
+                                                decrypted.includes('.json') === true ||
+                                                decrypted.includes('.sql') === true ||
+                                                decrypted.includes('.doc') === true ||
+                                                decrypted.includes('.zip') === true) {
+                                                var storageRef = firebase.storage().ref();
+                                                var spaceRef = storageRef.child(
+                                                    'images/' + decrypted);
+                                                storageRef.child('images/' + decrypted)
+                                                    .getDownloadURL().then(function(
+                                                        url) {
+                                                        $("#chat-content").append(
+                                                            '<li id="' +
+                                                            childKey +
+                                                            '" class="left"><img src="' +
+                                                            cData.avatar_url +
+                                                            '" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">' +
+                                                            childData.from_username +
+                                                            '</h5></div><a style="text-decoration: underline;cursor: pointer;color: #0e0ed8;" href="' +
+                                                            url +
+                                                            '" download="' +
+                                                            decrypted + '">' +
+                                                            decrypted +
+                                                            '</a></div><small style="margin-bottom: 26px;display: block;position: relative;margin-left: 30px;margin-top: -20px;" class="text-muted all-style" id="time_from">' +
+                                                            childData.time +
+                                                            '</small></li>');
+
+                                                    }).catch(function(error) {
+                                                        alert('erorrrrrrrr!');
+                                                    });
+                                            } else if (decrypted.includes('.com') ===
+                                                true ||
+                                                decrypted.includes('www') ===
+                                                true ||
+                                                decrypted.includes('.org') === true ||
+                                                decrypted.includes('.edu') === true ||
+                                                decrypted.includes('.net') === true
+                                            ) {
+                                                $("#chat-content").append('<li id="' +
+                                                    childKey +
+                                                    '" class="img-left"><img src="' +
+                                                    cData.avatar_url +
+                                                    '" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">' +
+                                                    childData.from_username +
+                                                    '</h5></div><a target="_blank" style="cursor: pointer;color: #0e0ed8;" href="' +
+                                                    decrypted + '">' + decrypted +
+                                                    '</a></div><small style="margin-bottom: 26px;display: block;position: relative;margin-left: 30px;margin-top: -20px;" class="text-muted all-style" id="time_from">' +
+                                                    childData.time +
+                                                    '</small></li>');
+                                            } else if (decrypted.includes('_record.wav') ===
+                                                true) {
+                                                if (childData.audio_translated !== null) {
+                                                    var decrypted = dec(childData.audio_translated,
+                                                        key);
+                                                    firebase.database().ref("users").once(
+                                                        'value',
+                                                        function(snapshot) {
+                                                            snapshot.forEach(
+                                                                function(
+                                                                    childSnapshot
+                                                                ) {
+                                                                    var c_Key =
+                                                                        childSnapshot
+                                                                        .key;
+                                                                    var c_Data =
+                                                                        childSnapshot
+                                                                        .val();
+                                                                    if (c_Key ==
+                                                                        id) {
+
+                                                                        lang =
+                                                                            c_Data
+                                                                            .language;
+                                                                        config = {
+                                                                            from: '',
+                                                                            to: lang,
+                                                                            api_key: 'AIzaSyBfgWAoQRuH-jXWQxDjD8GCcjsyKjka5ZU',
+                                                                            callback: function(
+                                                                                translatedText
+                                                                            ) {
+                                                                                $
+                                                                                    (
+                                                                                        "#chat-content"
+                                                                                    )
+                                                                                    .append(
+                                                                                        '<li id="' +
+                                                                                        childKey +
+                                                                                        '" class="img-left"><img src="' +
+                                                                                        cData
+                                                                                        .avatar_url +
+                                                                                        '" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">' +
+                                                                                        childData
+                                                                                        .from_username +
+                                                                                        '</h5></div><audio src="https://code.responsivevoice.org/getvoice.php?t=' +
+                                                                                        translatedText +
+                                                                                        '&tl=' +
+                                                                                        lang +
+                                                                                        '&{rate: 1.5}&{pitch: 2}&{volume: 1}"controlsList="nodownload"controls></audio></div><small style="    margin-bottom: 26px;display: block;position: relative;margin-left: 30px;margin-top: -20px;" class="text-muted all-style" id="time_from">' +
+                                                                                        childData.time +
+                                                                                        '</small></li>'
+                                                                                    );
+
+                                                                            }
+
+                                                                        };
+
+                                                                        translator
+                                                                            .translateLanguage(
+                                                                                decrypted,
+                                                                                config
+                                                                            );
+
+
+                                                                    }
+                                                                });
+                                                        });
+
+
+
+                                                }
+
+                                            } else {
+
+                                                $("#chat-content").append('<li id="' +
+                                                    childKey +
+                                                    '" class="left"><img src="' +
+                                                    cData.avatar_url +
+                                                    '" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">' +
+                                                    childData.from_username +
+                                                    '</h5></div><p id="mes_from">' +
+                                                    tran(' ', lang, decrypted,
+                                                        childKey) +
+                                                    '</p></div><small style="    margin-bottom: 26px;display: block;position: relative;margin-left: 30px;margin-top: -20px;" class="text-muted all-style" id="time_from">' +
+                                                    childData.time +
+                                                    '</small></li>');
+                                            }
+
+                                        }
+                                    });
+                                });
+                            }
+                        });
+
+
+
+                        commentsRef.on('child_changed', function(data) {
+                            var ck = data.key;
+                            var cd = data.val();
+                            if (cd.from_user_id == id && cd.to_user_id == f_id) {
+
+                                $("#chat-content #" + ck).html('<li class="right" id="' + ck +
+                                    '"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">' +
+                                    cd.from_username +
+                                    '</h5><small class="text-muted" id="time_from">' + cd.time +
+                                    '</small></div><p id="mes_from">' + cd.msg + '</p></div></li>');
+
+
+                            } else if (childData.to_user_id == id && childData.from_user_id == f_id) {
+
+                                $("#chat-content #" + ck).html('<li id="' + ck +
+                                    '" class="left"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="chat-item"><div class="chat-item-header"><h5 id="name_from">' +
+                                    cd.from_username +
+                                    '</h5><small class="text-muted" id="time_from">' + cd.time +
+                                    '</small></div><p id="mes_from">' + cd.msg + '</p></div></li>');
+
+
+                            }
+
+                        });
+
+                        commentsRef.on('child_removed', function(data) {
+                            $("#chat-content #" + data.key).remove();
+                        })
+
+
+
+
+                    }
+
+
+
+
+
+
+                } else {
+                    window.location = "index.html";
+
+                }
+            });
+
+            function send() {
+
+                var message = $("#mesg").val();
+                var messageEncrypt = enc(message, key);
+                //alert(messageEncrypt);
+                var audio_text = document.getElementById('id1').innerHTML;
+                var audioEncrypt = enc(audio_text, key);
+                if (message) {
+
+                    if (f_id && f_name && f_email) {
+
+                        firebase.database().ref('messages/one').push({
+                            msg: messageEncrypt,
+                            from_email: mail,
+                            from_user_id: id,
+                            from_username: name,
+                            to_email: f_email,
+                            to_user_id: f_id,
+                            to_username: f_name,
+                            time: time(),
+                            date: date(),
+                            audio_translated: audioEncrypt,
+
+                        }).then(function() {
+                            $("#mesg").val(' ');
+
+                        });
+
+
+                    } else {
+                        alert("Please Select Receive Friend");
+                    }
+                    // alert(document.getElementById('final_span').innerHTML);
+
+                } else {
+                    alert("message is empty!");
+                }
+
+                var chatBody = document.getElementById('body');
+
+                function scrolling() {
+                    var y = chatBody.scrollHeight,
+                        x = chatBody.scrollWidth;
+                    chatBody.scrollTo(0, y);
+                }
+                setTimeout(scrolling, 10);
+            }
+
+
+
+            var found = "";
+
+            function Search(e) {
+
+
+                if (e.keyCode == 13) {
+
+
+                    var search_user = document.getElementById("search").value;
+
+                    if (search_user) {
+
+                        firebase.database().ref("users").once('value', function(snapshot) {
+                            snapshot.forEach(function(childSnapshot) {
+                                var cK = childSnapshot.key;
+                                var cD = childSnapshot.val();
+
+                                if (cD.email == search_user && mail != search_user || cD.phone ==
+                                    search_user && myphone != search_user) {
+                                    found += 1;
+                                    $("#friend-content").html('<li id="' + cK +
+                                        '" onclick="" class="active"><a href="?uid=' + cK +
+                                        '&name=' + cD.username + '&email=' + cD.email +
+                                        '"><div class="contact"><img src="' + cD.avatar_url +
+                                        '" alt="" class="profile-photo-sm pull-left" /><div class="msg-preview"><h5>' +
+                                        cD.username +
+                                        '</h5></div></div></a><a id="profile" href="profile.html?id=' +
+                                        cK + '">Profile</a></li>');
+
+
+                                }
+
+
+
+                            });
+                            if (!found) {
+                                $("#friend-content").html(
+                                    '<li class="active"><div class="contact"><img src="" alt="" class="profile-photo-sm pull-left" /><div class="msg-preview"></div></div>Sorry , This Email Not Found</li>'
+                                );
+                            }
+                        });
+
+
+                    } else {
+                        "Enter Email Or Phone"
+                    }
+                }
+
+            }
+
+
+
+            /*******************************************************************/
+
+
+
+
+
+
+
+
+
+            /***************************************************************************/
+
+        </script>
+        <script>
+            var translator = new Translator();
+
+            function tran(source = null, target = null, text = null, id = null) {
+                var result = "";
+
+
+                config = {
+                    from: source,
+                    to: target,
+                    api_key: 'AIzaSyBfgWAoQRuH-jXWQxDjD8GCcjsyKjka5ZU', // use your own key
+                    callback: function(translatedText) {
+
+                        $("#" + id + " #mes_from").html(translatedText)
+
+                    }
+
+                };
+
+                translator.translateLanguage(text, config);
+
+
+            }
+
+        </script>
+        <script type="text/javascript">
+            var chatBody = document.getElementById('body');
+
+            function scrolling() {
+                var y = chatBody.scrollHeight,
+                    x = chatBody.scrollWidth;
+                chatBody.scrollTo(0, y);
+            }
+            setTimeout(scrolling, 4000);
+
+        </script>
+        <script type="text/javascript" src="js/speak.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script> -->
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAF4C8pp5dhUsTgFQS8CttcuIT4Yi5Djq8",
+                authDomain: "real-7031f.firebaseapp.com",
+                databaseURL: "https://real-7031f.firebaseio.com",
+                projectId: "real-7031f",
+                storageBucket: "real-7031f.appspot.com",
+                messagingSenderId: "194214200891"
+            };
+            firebase.initializeApp(config);
+
+        </script>
+
+
+        <script>
+            var storageRef = firebase.storage().ref();
+
+            function handleFileSelect(evt) {
+
+                evt.stopPropagation();
+                evt.preventDefault();
+                var file = evt.target.files[0];
+                var metadata = {
+                    'contentType': file.type
+                };
+                storageRef.child('images/' + file.name).put(file, metadata).then(function(snapshot) {
+                    console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+                    console.log(snapshot.metadata);
+                    var url = snapshot.metadata.downloadURLs[0];
+                    document.getElementById('mesg').value = file.name;
+                    //alert(file.name);
+                    console.log('File available at', url);
+
+
+                }).catch(function(error) {
+                    alert('Upload failed:', error);
+                });
+
+            }
+
+
+            document.getElementById('but').addEventListener('change', handleFileSelect);
+
+        </script>
+
+        <script type="text/javascript">
+            var filename = new Date().toISOString() + "_record";
+            URL = window.URL || window.webkitURL;
+            var n = document.URL.search("&email=") + 7;
+            var n1 = document.URL.substring(n);
+            var langs = "";
+            firebase.database().ref("users").once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var cKey = childSnapshot.key;
+                    var cData = childSnapshot.val();
+                    if (cKey == id) {
+                        langs = cData.language;
+                        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+                        var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+                        var SpeechRecognitionEvent = SpeechRecognitionEvent ||
+                            webkitSpeechRecognitionEvent
+
+                        var colors = ['aqua', 'azure', 'beige', 'bisque', 'black', 'blue', 'brown',
+                            'chocolate', 'coral', 'crimson', 'cyan', 'fuchsia', 'ghostwhite',
+                            'gold', 'goldenrod', 'gray', 'green', 'indigo', 'ivory', 'khaki',
+                            'lavender', 'lime', 'linen', 'magenta', 'maroon', 'moccasin', 'navy',
+                            'olive', 'orange', 'orchid', 'peru', 'pink', 'plum', 'purple', 'red',
+                            'salmon', 'sienna', 'silver', 'snow', 'tan', 'teal', 'thistle',
+                            'tomato', 'turquoise', 'violet', 'white', 'yellow'
+                        ];
+                        var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(
+                            ' | ') + ' ;'
+
+                        var recognition = new SpeechRecognition();
+                        var speechRecognitionList = new SpeechGrammarList();
+                        speechRecognitionList.addFromString(grammar, 1);
+                        recognition.grammars = speechRecognitionList;
+                        //recognition.continuous = false;
+
+                        recognition.lang = langs;
+                        recognition.interimResults = false;
+                        recognition.maxAlternatives = 1;
+
+                        recognition.onresult = function(event) {
+                            var au_tag = document.getElementById('audiotag');
+                            var last = event.results.length - 1;
+                            var color = event.results[last][0].transcript;
+                            document.getElementById('id1').innerHTML = color;
+                            au_tag.controls = true;
+                            au_tag.src = 'https://code.responsivevoice.org/getvoice.php?t=' + color +
+                                '&tl=ar';
+                            au_tag.controlsList = 'nodownload';
+
+                        }
+
+                        recognition.onnomatch = function(event) {
+                            alert("I didn't recognise that color.");
+                        }
+
+                        recognition.onerror = function(event) {
+                            alert('Error occurred in recognition: ' + event.error);
+                        }
+
+
+
+
+
+
+
+
+                        var gumStream;
+                        var rec;
+                        var input;
+                        var AudioContext = window.AudioContext || window.webkitAudioContext;
+                        var audioContext;
+                        var recordButton = document.getElementById("recordButton");
+                        var stopButton = document.getElementById("stopButton");
+                        recordButton.addEventListener("click", startRecording);
+                        stopButton.addEventListener("click", stopRecording);
+
+                        function startRecording() {
+
+                            recognition.start();
+                            console.log("recordButton clicked");
+                            var constraints = {
+                                audio: true,
+                                video: false
+                            }
+                            recordButton.style.display = "none";
+                            stopButton.style.display = "inline";
+                            stopButton.style.color = "#f13636";
+                            navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+                                console.log(
+                                    "getUserMedia() success, stream created, initializing Recorder.js ..."
+                                );
+                                audioContext = new AudioContext();
+                                gumStream = stream;
+                                input = audioContext.createMediaStreamSource(stream);
+                                rec = new Recorder(input, {
+                                    numChannels: 1
+                                })
+                                rec.record()
+                                console.log("Recording started");
+                            }).catch(function(err) {
+                                alert(error);
+                            });
+                            var input = document.getElementById('mesg');
+                        };
+
+                        function stopRecording() {
+                            console.log("stopButton clicked");
+                            stopButton.style.display = "none";
+                            recordButton.style.display = "inline";
+                            //rec.stop();
+                            gumStream.getAudioTracks()[0].stop();
+                            rec.exportWAV(createDownloadLink);
+
+                            recognition.stop();
+
+
+                        }
+
+                        function createDownloadLink(blob) {
+
+
+                            var url = URL.createObjectURL(blob);
+                            var au = document.getElementById('audio');
+                            au.controls = true;
+                            au.src = url;
+                            au.controlsList = "nodownload";
+
+
+
+
+                            var storageRef = firebase.storage().ref();
+                            var file = blob;
+                            var metadata = {
+                                'contentType': file.type
+                            };
+                            storageRef.child('recordes/' + filename + '.wav').put(file, metadata).then(
+                                function(snapshot) {
+                                    console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+                                    console.log(snapshot.metadata);
+                                    var url = snapshot.metadata.downloadURLs[0];
+                                    //alert(url);
+                                    console.log('File available at', url);
+                                    document.getElementById('mesg').value = filename + '.wav';
+
+                                }).catch(function(error) {
+                                console.error('Upload failed:', error);
+                            });
+
+
+                        }
+                    }
+                });
+            });
+            const modal = document.querySelector('#my-modal');
+            const closeBtn = document.querySelector('.close');
+            const imgInfo = document.querySelector('img#imgInfo');
+            const nameInfo = document.querySelector('h2#nameInfo');
+            const details = document.querySelector('p#details');
+            const phoneInfo = document.querySelector('span#phoneInfo');
+            const emailInfo = document.querySelector('span#emailInfo');
+            const statusInfo = document.querySelector('span#statusInfo');
+            const brithInfo = document.querySelector('span#brithInfo');
+            const eduInfo = document.querySelector('span#eduInfo');
+
+            function myProfile(id) {
+                modal.style.display = 'block';
+                //alert(id);
+
+                firebase.database().ref("users/").once('value', function(snapshot) {
+                    snapshot.forEach(function(childSnapshot) {
+                        var cKey = childSnapshot.key;
+                        var cData = childSnapshot.val();
+                        if (cKey == id) {
+                            var name = cData.username;
+                            var fname = cData.firstname;
+                            var lname = cData.lastname;
+                            var email = cData.email;
+                            var password = cData.password;
+                            var language = cData.language;
+                            var gender = cData.gender;
+                            var phone = cData.phone;
+                            var photo = cData.photo;
+                            var year = cData.year;
+                            var month = cData.month;
+                            var day = cData.day;
+                            var status = cData.status;
+                            var active = cData.active;
+                            var education = cData.education;
+                            var information = cData.information;
+                            var avatar_url = cData.avatar_url;
+                            //alert(avatar_url);
+                            imgInfo.src = avatar_url;
+                            nameInfo.innerText = name;
+                            details.innerHTML = "<strong>Information : </strong>" + information;
+                            phoneInfo.innerText = phone;
+                            emailInfo.innerText = email;
+                            if (active == 0) {
+                                statusInfo.innerHTML = "not-active";
+                            } else {
+                                statusInfo.innerHTML = "active";
+                            }
+
+                            brithInfo.innerHTML = day + " / " + month + " / " + year;
+                            eduInfo.innerHTML = education;
+
+
+                        }
+
+
+
+
+
+
+
+
+
+                    });
+                });
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', outsideClick);
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function outsideClick(e) {
+                if (e.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+        </script>
+
+
+</body>
+
+</html>

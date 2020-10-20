@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>DOM touchstart Event</h1>
+
+<p id="one">sdd</p>
+<a href="/" disabled="disabled">123n</a>
+
+<script>
+var theElement = document.getElementById("one");
+
+theElement.addEventListener("touchend", handlerFunction, false);
+
+function handlerFunction(event) {
+	alert("dsdsds");
+}
+</script>
+
+</body>
+</html>
